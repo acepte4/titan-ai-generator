@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <title>TITAN AI GENERATOR</title>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TITAN AI GENERATOR</title>
+
   <link rel="stylesheet" href="index.css">
 
   <script type="importmap">
@@ -19,22 +21,22 @@
     <h1>TITAN AI GENERATOR</h1>
   </header>
 
-  <!-- ===== API KEY SECTION ===== -->
-  <section id="api-key-section" class="api-box">
-    <label for="api-key-input" class="api-label">Masukkan API Key kamu:</label>
-    <div class="api-input-row">
-      <input 
-        type="password" 
-        id="api-key-input" 
-        placeholder="Masukkan API Key Google AI Studio kamu" 
-        class="api-input"
-      />
-      <button id="save-api-key" class="api-button">Simpan API Key</button>
-    </div>
-  </section>
-
-  <!-- ===== FORM UTAMA ===== -->
   <main>
+    <!-- ===== API KEY SECTION ===== -->
+    <div id="api-key-section" class="api-box">
+      <h2>Masukkan API Key kamu:</h2>
+      <div class="api-input-row">
+        <input 
+          type="password" 
+          id="api-key-input" 
+          placeholder="Masukkan API Key Google AI Studio kamu" 
+          class="api-input"
+        />
+        <button id="save-api-key" class="api-button">Simpan API Key</button>
+      </div>
+    </div>
+
+    <!-- ===== FORM UTAMA ===== -->
     <div class="prompt-container">
       <label for="prompt-input">Masukkan prompt deskripsi gambar</label>
       <input type="text" id="prompt-input" name="prompt" placeholder="Contoh: Seekor kucing astronot di bulan">
