@@ -4,7 +4,27 @@
 */
 import { GoogleGenAI, Modality } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Ambil API key dari localStorage (kalau sudah disimpan)
+let savedKey = localStorage.getItem("titan_api_key") || "";
+let ai: GoogleGenAI | null = savedKey ? new GoogleGenAI({ apiKey: savedKey }) : null;
+
+// Ambil elemen input API key & tombol simpan
+const apiKeyInput = document.getElementById("api-key-input") as HTMLInputElement;
+const saveKeyButton = document.getElementById("save-api-key") as HTMLButtonElement;
+
+if (saveKeyButton && apiKeyInput) {
+  apiKeyInput.value = savedKey;
+  saveKeyButton.addEventListener("click", () => {
+    const key = apiKeyInput.value.trim();
+    if (!key) {
+      alert("Masukkan API key dulu!");
+      return;
+    }
+    localStorage.setItem("titan_api_key", key);
+    ai = new GoogleGenAI({ apiKey: key });
+    alert("API key berhasil disimpan di browser kamu ✅");
+  });
+}
 
 // Get references to all the input elements and the container
 const promptInput = document.getElementById('prompt-input') as HTMLInputElement;
@@ -54,6 +74,11 @@ function fileToGenerativePart(file: File): Promise<{ inlineData: { data: string,
 
 // Add a click event listener to the generate button
 generateButton.addEventListener('click', async () => {
+    if (!ai) {
+    contentContainer.innerHTML = `<div class="error"><p>Masukkan API key kamu dulu sebelum generate gambar.</p></div>`;
+    return;
+  }
+
   const prompt = promptInput.value;
   if (!prompt) {
     contentContainer.innerHTML = `<div class="error"><p>Harap masukkan prompt deskripsi gambar.</p></div>`;
