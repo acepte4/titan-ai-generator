@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TITAN AI GENERATOR</title>
+  <link rel="stylesheet" href="index.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="importmap">
+    {
+      "imports": {
+        "@google/genai": "https://esm.sh/@google/genai"
+      }
+    }
+  </script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+  <header>
+    <h1>TITAN AI GENERATOR</h1>
+  </header>
+  <main>
+    <div class="prompt-container">
+      <label for="prompt-input">Masukkan prompt deskripsi gambar</label>
+      <input type="text" id="prompt-input" name="prompt" placeholder="Contoh: Seekor kucing astronot di bulan">
+    </div>
+    <div class="prompt-container">
+      <label for="reference-photo-input">Upload foto wajah sebagai referensi</label>
+      <input type="file" id="reference-photo-input" name="reference_photo" accept="image/*">
+    </div>
+    <div class="prompt-container">
+      <label for="aspect-ratio-select">Pilih rasio aspek</label>
+      <select id="aspect-ratio-select" name="aspect_ratio">
+        <option value="1:1">1:1 (Square)</option>
+        <option value="9:16">9:16 (Portrait)</option>
+        <option value="16:9">16:9 (Landscape)</option>
+        <option value="4:5">4:5 (Instagram Portrait)</option>
+        <option value="3:2">3:2 (Photo Standard)</option>
+      </select>
+    </div>
+    <div class="prompt-container">
+      <label for="style-select">Pilih gaya / style gambar</label>
+      <select id="style-select" name="style">
+        <option value="Realistis">Realistis</option>
+        <option value="Cinematik">Cinematik</option>
+        <option value="3D Pixar Style">3D Pixar Style</option>
+        <option value="Anime">Anime</option>
+        <option value="Digital Art">Digital Art</option>
+        <option value="Sketch">Sketch</option>
+        <option value="Fantasy">Fantasy</option>
+        <option value="Minimalist">Minimalist</option>
+        <option value="Painting / Oil Art">Painting / Oil Art</option>
+        <option value="Cyberpunk">Cyberpunk</option>
+        <option value="Retro / Vintage">Retro / Vintage</option>
+        <option value="Pop Art">Pop Art</option>
+      </select>
+    </div>
+    <div class="prompt-container">
+      <label for="quality-select">Kualitas Gambar</label>
+      <select id="quality-select" name="quality">
+        <option value="Standar">Standar</option>
+        <option value="HD">HD</option>
+        <option value="Ultra HD">Ultra HD</option>
+        <option value="8K Detail">8K Detail</option>
+      </select>
+    </div>
+    <button id="generate-button">Generate Gambar</button>
+    <div id="content-container"></div>
+  </main>
+  <script type="module" src="index.tsx"></script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
